@@ -37,8 +37,6 @@ Meteor.methods({
 
     // Fetch our theme and make sure its valid
     var fullPath = path.resolve("../../../../../public/themes") + '/' + theme;
-    console.log(fullPath);
-    console.log(process.cwd());
     if(fs.existsSync(fullPath + "/theme.json")) {
       console.log('Setting '+theme+' as current theme...');
 
