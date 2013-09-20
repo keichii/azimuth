@@ -36,11 +36,13 @@ Meteor.methods({
     }
 
     // Fetch our theme and make sure its valid
-    var fullPath = "public/themes/" + theme;
+    var fullPath = path.resolve("../../../../../public/themes") + '/' + theme;
+    console.log(fullPath);
+    console.log(process.cwd());
     if(fs.existsSync(fullPath + "/theme.json")) {
       console.log('Setting '+theme+' as current theme...');
 
-      wrench.copyDirSyncRecursive(fullPath, 'client/css/theme', {
+      wrench.copyDirSyncRecursive(fullPath, path.resolve("../../../../../client/css/theme"), {
         forceDelete: true, // Whether to overwrite existing directory or not
         preserveFiles: false // If we're overwriting something and the file already exists, keep the existing
       });
