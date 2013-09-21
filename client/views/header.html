@@ -1,48 +1,50 @@
 <template name="header">
-  <div class="navbar navbar-inverse">
-    <div class="navbar-inner">
-      <div class="container">
-
-        <button type="button" class="btn navbar-btn" data-toggle="collapse" data-target=".nav-collapse">
-          <span class=".glyphicon .glyphicon-barcode"></span>
-          <span class=".glyphicon .glyphicon-barcode"></span>
-          <span class=".glyphicon .glyphicon-barcode"></span>
-        </button>
-
-        <a class="navbar-brand" href="/">{{#ifSetting "logoUrl"}}<img class="logo" src="{{getSetting 'logoUrl'}}">{{/ifSetting}}{{getSetting 'siteName'}}</a>
-
-        <div class="page-menu nav-collapse collapse">
-          {{#with headerNav}}
-            {{>header_nav_root}}
-          {{/with}}
-        </div>
-
-        {{#if isInRole 'admin'}}
-          <ul class="nav pull-right hidden-sm">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown"><i class=".glyphicon .glyphicon-cog"></i> <b class="caret"></b></a>
-              <ul id="adminMenu" class="dropdown-menu">
-                <li class="nav-header">Admin</li>
-                <li><a href="/settings">Site Settings</a></li>
-                <li><a href="/navigation">Site Navigation</a></li>
-                <li><a href="/users">Users</a></li>
-                <li><a href="/new_page">New Page</a></li>
-                <li class="dropdown-submenu">
-                  <a tabindex="-1">Edit Page</a>
-                  <ul class="dropdown-menu">
-                    {{#each pages}}
-                      <li><a href="/{{slug}}/edit">{{title}}</a></li>
-                    {{/each}}
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        {{/if}}
-        {{#ifSetting 'showLoginInHeader'}}<div class="desktop-login hidden-sm">{{ loginButtons }}</div>{{/ifSetting}}
-      </div>
-    </div>
-  </div>
+<div class="navbar navbar-default">
+                <div class="container">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                  </div>
+                  <div class="navbar-collapse navbar-responsive-collapse collapse" style="height: 1px;">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Active</a></li>
+                      <li><a href="#">Link</a></li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Action</a></li>
+                          <li><a href="#">Another action</a></li>
+                          <li><a href="#">Something else here</a></li>
+                          <li class="divider"></li>
+                          <li class="dropdown-header">Dropdown header</li>
+                          <li><a href="#">Separated link</a></li>
+                          <li><a href="#">One more separated link</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                      <input type="text" class="form-control col-lg-8" placeholder="Search">
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="#">Link</a></li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Action</a></li>
+                          <li><a href="#">Another action</a></li>
+                          <li><a href="#">Something else here</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Separated link</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div><!-- /.nav-collapse -->
+                </div><!-- /.container -->
+              </div>
 </template>
 
 <template name="header_nav_root">
