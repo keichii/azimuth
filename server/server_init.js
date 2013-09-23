@@ -137,4 +137,39 @@ Meteor.startup(function () {
     Navigation.insert({location: "footer_active", pages: nav});
     Navigation.insert({location: "footer_disabled", pages: []});
   }
+  
+  
+  
+  
+  Videos = new Meteor.Collection("videos");
+
+
+  Videos.allow({
+    insert: authorize.admins,
+    update: authorize.admins,
+    remove: authorize.admins
+  });
+  
+  if (Videos.find().count() === 0) {
+    var vidlist  = [{
+                      imgsrc :"img/450x340.jpg",
+                      width : "331",
+                      height : "250",
+                      vidtitle : "White Girl With Booty!",
+                      vidpostedby : "Pawg on Sep 13, 2013"
+                    }];
+    for (var i = 0; i < vidlist.length; i++)
+      Videos.insert({
+      imgsrc: vidlist[i].imgsrc, 
+      width: vidlist[i].width, 
+      height :vidlist[i].height,
+      vidtitle: vidlist[i].vidtitle,
+      vidpostedby:vidlist[i].vidpostedby
+      });
+  }
+  
+  Meteor.publish('videos', function () {
+    return Videos.find();
+  });  
+    
 });
